@@ -1,8 +1,9 @@
-const CACHE_NAME = 'sumedangpwa-v1';
+const CACHE_NAME = 'sumedangpwa-v1.1';
 const urlsToCache = [
   '/',
   '/nav.html',
   '/index.html',
+  '/manifest.json',
   '/pages/about.html',
   '/pages/home.html',
   '/pages/makanan.html',
@@ -22,6 +23,8 @@ const urlsToCache = [
   '/img/icon/apple-touch-icon.png',
   '/img/icon/android-chrome-192x192.png',
   '/img/icon/android-chrome-512x512.png',
+  '/img/icon/maskable-icon-192x192.png',
+  '/img/icon/maskable-icon-512x512.png',
 ];
 
 // Menambahkan CACHE
