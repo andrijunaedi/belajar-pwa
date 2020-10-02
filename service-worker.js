@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sumedangpwa-v2';
+const CACHE_NAME = 'sumedangpwa-v1';
 const urlsToCache = [
   '/',
   '/nav.html',
