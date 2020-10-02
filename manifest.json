@@ -1,0 +1,21 @@
+{
+  "name": "Sumedang PWA",
+  "short_name": "Sumedang",
+  "description": "Aplikasi PWA pertama saya",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#00897B",
+  "theme_color": "#00897B",
+  "icons": [
+    {
+      "src": "/img/icon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
