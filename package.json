@@ -11,6 +11,7 @@
   "author": "andrijunaedi <andrijunaedi126@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.0",
     "materialize-css": "^1.0.0"
   },
   "devDependencies": {

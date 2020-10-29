@@ -5,16 +5,17 @@ const loadNav = () => {
   const topNav = document.querySelector('.topnav');
   const nav = `
     <li><a class="waves-effect" href="#home">Home</a></li>
-    <li><a class="waves-effect" href="#about">About</a></li>
-    <li><a class="waves-effect" href="#contact">Contact</a></li>
-    <li><a class="waves-effect" href="#saved">Saved</a></li>
+    <li><a class="waves-effect" href="#mathes">Pertandingan</a></li>
+    <li><a class="waves-effect" href="#competition">Kompetisi</a></li>
+    <li><a class="waves-effect" href="#team">Team</a></li>
+    <li><a class="waves-effect" href="#favorit">Team Favorit</a></li>
     `;
   let userView = `<li>
     <div class="user-view">
-        <div class="background"></div>
-        <a href="#user"><img class="circle" src="img/android-chrome-512x512.png"/></a>
-        <a href="#name"><span class="white-text name">John Doe</span></a>
-        <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>  
+        <div class="background color-4">
+        </div>
+        <a href="#home"><img class="circle" src="img/android-chrome-192x192.png"/></a>
+        <a href="#home" class="title"><span class="white-text">Bolaku</span></a>
     </div>
   </li>`;
 
