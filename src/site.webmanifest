@@ -1,0 +1,29 @@
+{
+  "name": "Bolaku",
+  "short_name": "Bolaku",
+  "description": "Bolaku",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#394867",
+  "theme_color": "#394867",
+  "icons": [
+    {
+      "src": "/img/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/maskable-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
