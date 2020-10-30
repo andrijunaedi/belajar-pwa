@@ -17,6 +17,9 @@
 .text-center {
   text-align: center;
 }
+.text-bold {
+  font-weight: bold;
+}
 
 .user-view {
   height: 30vh;
@@ -29,26 +32,76 @@
   height: 100%;
 }
 
-.title {
+.ml-2 {
   margin-left: 20px;
+}
+
+.title {
   font-size: 2rem;
   font-weight: 700;
 }
 
-.match {
+.title-2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.jumbotron {
+  width: 100vw;
+  height: 50vh;
   display: flex;
-  margin-top: 20px;
   justify-content: center;
   align-items: center;
 }
 
-.match .club {
-  margin: 0 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.jumbotron .title-compotition {
+  font-size: 2rem;
+  font-weight: 700;
 }
 
-.club .image {
-  margin: 0 10px;
+.jumbotron .season {
+  flex-basis: 100%;
+}
+
+.teams-card {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.team {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 5px;
+}
+.team img {
+  max-width: 80%;
+  height: 100px;
+}
+
+.team .name {
+  margin-top: 5px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-align: center;
+  flex-basis: 100%;
+}
+
+.team .name a {
+  color: #424874;
+}
+
+.team .name a:hover {
+  color: #161616;
+  font-weight: 700;
+}
+
+.logo {
+  max-width: 90%;
+  margin: 0 auto;
 }

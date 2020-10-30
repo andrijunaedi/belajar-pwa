@@ -1,8 +1,9 @@
 import { Sidenav } from 'materialize-css';
-import { get } from 'axios';
+
 import registerServiceWorker from './script/register';
 import loadNav from './components/nav';
-import { formatYmd, futureDate } from './script/date';
+import Home from './pages/Home';
+import DetailTeam from './pages/DetailTeam';
 
 if (!('serviceWorker' in navigator)) {
   console.log('Service worker tidak didukung browser ini.');
@@ -10,46 +11,42 @@ if (!('serviceWorker' in navigator)) {
   registerServiceWorker();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const element = document.querySelector('.sidenav');
-  Sidenav.init(element);
-  loadNav();
-});
-
-const baseUrl = 'http://api.football-data.org/v2';
-
-const getMatches = async () => {
-  try {
-    const dateNow = formatYmd(new Date());
-    const dateAgo = formatYmd(futureDate(2));
-    const response = await get(`${baseUrl}/matches`, {
-      headers: { 'X-Auth-Token': '0fb5b15aaa624ab28734d37f94f2a1ca' },
-      params: {
-        competitions: '2001,2021',
-        dateFrom: dateNow,
-        dateTo: dateAgo,
-      },
-    });
-    const { matches } = response.data;
-    const data = matches.map((match) => match);
-    const main = document.querySelector('.main');
-    console.log(main);
-  } catch (error) {
-    console.error(error);
+const loadPage = (page, id) => {
+  switch (page) {
+    case 'teamDetail':
+      DetailTeam(id);
+      break;
+    case 'favorit':
+      console.log('favorit');
+      break;
+    case 'home':
+      Home();
+      break;
+    default:
+      Home();
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidenav = document.querySelector('.sidenav');
+    Sidenav.init(sidenav);
+    loadNav();
+
+    document.querySelectorAll('.sidenav a, .topnav a').forEach((elm) => {
+      elm.addEventListener('click', (event) => {
+        Sidenav.getInstance(sidenav).close();
+
+        const pagelink = event.target.getAttribute('href').substr(2);
+        loadPage(pagelink);
+      });
+    });
+  });
 };
 
-const getCompetitions = async () => {
-  try {
-    const response = await get(`${baseUrl}/competitions`, {
-      headers: { 'X-Auth-Token': '0fb5b15aaa624ab28734d37f94f2a1ca' },
-      params: {},
-    });
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
-};
+const urlParams = new URLSearchParams(window.location.search);
+const idTeam = urlParams.get('teamId');
+let pages = window.location.hash.substr(2);
 
-getMatches();
-// getCompetitions();
+if (pages === '') pages = 'home';
+if (idTeam) pages = 'teamDetail';
+
+loadPage(pages, idTeam);
