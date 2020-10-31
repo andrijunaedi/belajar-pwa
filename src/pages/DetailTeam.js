@@ -1,7 +1,7 @@
 import getDetailTeams from '../api/teams';
 import tabTeam from '../components/tabTeam';
 import tronTeams from '../components/tronTeams';
-import { saveForFavorit } from '../script/db';
+import { saveForFavorite } from '../script/db';
 
 const DetailTeam = async (id) => {
   const main = document.querySelector('.main');
@@ -29,7 +29,7 @@ const DetailTeam = async (id) => {
   btnSave.addEventListener('click', async () => {
     const idTeam = window.location.hash.substr(9);
     const data = await getDetailTeams(idTeam);
-    saveForFavorit(data);
+    saveForFavorite(data);
   });
 };
 

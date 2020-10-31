@@ -20,46 +20,36 @@ self.addEventListener('install', (event) => {
   );
 });
 
-self.addEventListener('fetch', (ev) => {
-  const apiURL = 'https://api.football-data.org/';
+// Mengecek Data jika ada di cache maka data akan diarahkan ke CACHE
+self.addEventListener('fetch', (event) => {
+  const baseUrl = 'http://api.football-data.org/';
 
-  if (ev.request.url.indexOf(apiURL) > -1) {
-    ev.respondWith(
+  if (event.request.url.indexOf(baseUrl) > -1) {
+    event.respondWith(
       caches.open(CACHE_NAME).then((cache) =>
-        fetch(ev.request).then((response) => {
-          cache.put(ev.request.url, response.clone());
+        fetch(event.request).then((response) => {
+          cache.put(event.request.url, response.clone());
           return response;
         }),
       ),
     );
   } else {
-    ev.respondWith(
+    event.respondWith(
       caches
-        .match(ev.request, { ignoreSearch: true })
-        .then((response) => response || fetch(ev.request)),
+        .match(event.request)
+        .then((response) => response || fetch(event.request)),
     );
   }
 });
-// Cek rosouce on cache
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request, { cacheName: CACHE_NAME }).then((response) => {
-      if (response) {
-        return response;
-      }
-      return fetch(event.request);
-    }),
-  );
-});
 
-// Delete Old Cache
+// Menghapus CACHE lama
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) =>
       Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_NAME) {
-            console.log(`cache ${cacheName} dihapus`);
+            console.log(`ServiceWorker: cache ${cacheName} dihapus`);
             return caches.delete(cacheName);
           }
         }),

@@ -9,7 +9,7 @@ const dbPromise = openDB('bolaku', 1, {
   },
 });
 
-function saveForFavorit(team) {
+function saveForFavorite(team) {
   dbPromise
     .then((db) => {
       const tx = db.transaction('teams', 'readwrite');
@@ -22,8 +22,8 @@ function saveForFavorit(team) {
     });
 }
 
-function getAllFavorit() {
-  return new Promise((resolve) => {
+function getAllFavorite() {
+  return new Promise((resolve) =>
     dbPromise
       .then((db) => {
         const tx = db.transaction('teams', 'readonly');
@@ -31,17 +31,17 @@ function getAllFavorit() {
         return store.getAll();
       })
       .then((teams) => {
-        resolve(teams);
-      });
-  });
+        console.log(teams);
+        return resolve(teams);
+      }),
+  );
 }
 
-function deteleFavorit(id) {
+function deteleFavorite(id) {
   dbPromise
     .then((db) => {
       const tx = db.transaction('teams', 'readwrite');
       const store = tx.objectStore('teams');
-      console.log(id);
       store.delete(id);
       return tx.complete;
     })
@@ -51,4 +51,26 @@ function deteleFavorit(id) {
     .catch((err) => console.log(err));
 }
 
-export { saveForFavorit, getAllFavorit, deteleFavorit };
+function getFavoriteById(id) {
+  return new Promise((resolve) =>
+    dbPromise
+      .then((db) => {
+        const tx = db.transaction('teams', 'readonly');
+        const store = tx.objectStore('teams');
+        const data = store.get('id', id);
+        return data;
+      })
+      .then((teams) => {
+        console.log(teams);
+        return resolve(teams);
+      }),
+  );
+}
+
+// const getdata = {
+//   async get(key) {
+//     return (await dbPromise).get('id', key);
+//   },
+// }
+
+export { saveForFavorite, getAllFavorite, deteleFavorite, getFavoriteById };

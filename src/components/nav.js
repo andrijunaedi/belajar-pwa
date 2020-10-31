@@ -3,7 +3,7 @@ const loadNav = () => {
   const topNav = document.querySelector('.topnav');
   const nav = `
     <li><a class="waves-effect" href="#home">Home</a></li>
-    <li><a class="waves-effect" href="#favorit">Team Favorit</a></li>
+    <li><a class="waves-effect" href="#favorite">Team Favorite</a></li>
     `;
   let userView = `<li>
     <div class="user-view">

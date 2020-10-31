@@ -1,15 +1,16 @@
 // * routing
 import Home from './Home';
 import DetailTeam from './DetailTeam';
-import Favorit from './Favorit';
+import Favorite from './Favorite';
+import DetailFavorite from './DatailFavorite';
 
 function parseUrl(pages) {
   const page = pages.split('?');
 
   if (page.length <= 1) {
     switch (page[0]) {
-      case 'favorit':
-        Favorit();
+      case 'favorite':
+        Favorite();
         break;
       case 'home':
         Home();
@@ -23,6 +24,9 @@ function parseUrl(pages) {
     switch (page[0]) {
       case 'team':
         DetailTeam(id);
+        break;
+      case 'favorite':
+        DetailFavorite(id);
         break;
       default:
         Home();
