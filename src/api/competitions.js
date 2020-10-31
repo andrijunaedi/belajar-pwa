@@ -13,7 +13,6 @@ const getCompetitions = async (id) => {
           if (response) {
             return response.json().then((value) => value);
           }
-          return null;
         });
     }
 
@@ -37,7 +36,6 @@ const getTeams = async (id) => {
           if (response) {
             return response.json().then((value) => value);
           }
-          return null;
         });
     }
 

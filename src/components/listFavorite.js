@@ -26,7 +26,7 @@ const listFavorite = (favorite) => {
     li.innerHTML = `
         <div>
             <a href="#favorite?id=${team.id}" class="detail-favorite">${team.name}</a>
-            <a href="#favorite" class="secondary-content delete-team"><i data="${team.id}" class="material-icons">delete</i></a>
+            <a href="#favorite" class="secondary-content delete-team"><i data="${team.id}" page="#favorite" class="material-icons">delete</i></a>
         </div>
       `;
     listCard.appendChild(li);
@@ -41,8 +41,10 @@ const listFavorite = (favorite) => {
 
   document.querySelectorAll('.delete-team').forEach((elm) => {
     elm.addEventListener('click', async (event) => {
+      const page = event.target.getAttribute('page').substr(1);
       const id = event.target.getAttribute('data');
       deteleFavorite(id);
+      parseUrl(page);
     });
   });
 };

@@ -30,19 +30,18 @@ function getAllFavorite() {
         const store = tx.objectStore('teams');
         return store.getAll();
       })
-      .then((teams) => {
-        console.log(teams);
-        return resolve(teams);
-      }),
+      .then((teams) => resolve(teams)),
   );
 }
 
 function deteleFavorite(id) {
+  const num = parseInt(id, 10);
+
   dbPromise
     .then((db) => {
       const tx = db.transaction('teams', 'readwrite');
       const store = tx.objectStore('teams');
-      store.delete(id);
+      store.delete(num);
       return tx.complete;
     })
     .then(() => {
@@ -52,25 +51,18 @@ function deteleFavorite(id) {
 }
 
 function getFavoriteById(id) {
+  const num = parseInt(id, 10);
+
   return new Promise((resolve) =>
     dbPromise
       .then((db) => {
         const tx = db.transaction('teams', 'readonly');
         const store = tx.objectStore('teams');
-        const data = store.get('id', id);
+        const data = store.get(num);
         return data;
       })
-      .then((teams) => {
-        console.log(teams);
-        return resolve(teams);
-      }),
+      .then((teams) => resolve(teams)),
   );
 }
-
-// const getdata = {
-//   async get(key) {
-//     return (await dbPromise).get('id', key);
-//   },
-// }
 
 export { saveForFavorite, getAllFavorite, deteleFavorite, getFavoriteById };
