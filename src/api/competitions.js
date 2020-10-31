@@ -5,22 +5,28 @@ const { baseUrl, apiKey } = data;
 
 const getCompetitions = async (id) => {
   try {
+    // online
+
     // offline
     if ('caches' in window) {
       return caches
         .match(`${baseUrl}v2/competitions/${id}`)
-        .then((response) => {
+        .then(async (response) => {
           if (response) {
             return response.json().then((value) => value);
           }
+
+          const competitions = await get(`${baseUrl}v2/competitions/${id}`, {
+            headers: { 'X-Auth-Token': apiKey },
+          });
+          return competitions.data;
         });
     }
 
-    // online
-    const response = await get(`${baseUrl}v2/competitions/${id}`, {
+    const competitions = await get(`${baseUrl}v2/competitions/${id}`, {
       headers: { 'X-Auth-Token': apiKey },
     });
-    return response.data;
+    return competitions.data;
   } catch (error) {
     return error;
   }
@@ -32,18 +38,22 @@ const getTeams = async (id) => {
     if ('caches' in window) {
       return caches
         .match(`${baseUrl}v2/competitions/${id}/teams`)
-        .then((response) => {
+        .then(async (response) => {
           if (response) {
             return response.json().then((value) => value);
           }
+          // online
+          const teams = await get(`${baseUrl}v2/competitions/${id}/teams`, {
+            headers: { 'X-Auth-Token': apiKey },
+          });
+          return teams.data;
         });
     }
-
     // online
-    const response = await get(`${baseUrl}v2/competitions/${id}/teams`, {
+    const teams = await get(`${baseUrl}v2/competitions/${id}/teams`, {
       headers: { 'X-Auth-Token': apiKey },
     });
-    return response.data;
+    return teams.data;
   } catch (error) {
     return error;
   }

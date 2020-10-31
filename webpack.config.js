@@ -38,7 +38,7 @@ module.exports = {
           to: path.resolve(__dirname, 'dist'),
         },
         {
-          from: './src/site.webmanifest',
+          from: './src/manifest.json',
           to: path.resolve(__dirname, 'dist'),
         },
         {

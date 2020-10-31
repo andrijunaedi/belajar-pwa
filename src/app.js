@@ -3,12 +3,15 @@ import { Sidenav } from 'materialize-css';
 import registerServiceWorker from './script/register';
 import loadNav from './components/nav';
 import parseUrl from './pages/route';
+import requestPermission from './script/notif';
 
 if (!('serviceWorker' in navigator)) {
   console.log('Service worker tidak didukung browser ini.');
 } else {
   registerServiceWorker();
 }
+
+requestPermission();
 
 const pages = window.location.hash.substr(1);
 

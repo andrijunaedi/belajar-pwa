@@ -1,11 +1,12 @@
 {
   "name": "Bolaku",
   "short_name": "Bolaku",
-  "description": "Bolaku",
+  "description": "Selamat datang di Bolaku!!, Menampilkan seputar info sepakbola liga Premier Leagua!!!",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#394867",
   "theme_color": "#394867",
+  "gcm_sender_id": "702437966332",
   "icons": [
     {
       "src": "/img/android-chrome-192x192.png",
