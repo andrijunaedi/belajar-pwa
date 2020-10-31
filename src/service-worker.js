@@ -20,22 +20,23 @@ self.addEventListener('install', (event) => {
   );
 });
 
-self.addEventListener('fetch', (event) => {
-  const baseUrl = 'http://readerapi.codepolitan.com/';
-  if (event.request.url.indexOf(baseUrl) > -1) {
-    event.respondWith(
-      (async () => {
-        const cache = await caches.open(CACHE_NAME);
-        const res = await fetch(event.request);
-        cache.put(event.request.url, res.clone());
-        return res;
-      })(),
+self.addEventListener('fetch', (ev) => {
+  const apiURL = 'https://api.football-data.org/';
+
+  if (ev.request.url.indexOf(apiURL) > -1) {
+    ev.respondWith(
+      caches.open(CACHE_NAME).then((cache) =>
+        fetch(ev.request).then((response) => {
+          cache.put(ev.request.url, response.clone());
+          return response;
+        }),
+      ),
     );
   } else {
-    event.respondWith(
+    ev.respondWith(
       caches
-        .match(event.request)
-        .then((response) => response || fetch(event.request)),
+        .match(ev.request, { ignoreSearch: true })
+        .then((response) => response || fetch(ev.request)),
     );
   }
 });

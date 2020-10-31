@@ -1,4 +1,4 @@
-// import Route from '../pages/route';
+import parseUrl from '../pages/route';
 
 const teamsSection = (data) => {
   const main = document.querySelector('.main');
@@ -22,8 +22,8 @@ const teamsSection = (data) => {
     div.innerHTML = `
 
       <div class="team">
-      <a href="./?teamId=${id}"><img src="${img}" alt="${name}" /></a>
-      <div class="name"><a href="./?teamId=${id}" >${name}</a></div>
+      <a href="./#team?id=${id}"><img src="${img}" alt="${name}" href="#team?id=${id}" /></a>
+      <div class="name"><a href="./#team?id=${id}" >${name}</a></div>
       </div>
 
         `;
@@ -32,6 +32,12 @@ const teamsSection = (data) => {
   data.forEach((team) => {
     const { name, crestUrl, id } = team;
     cardTeam(id, name, crestUrl);
+  });
+  document.querySelectorAll('.team a').forEach((elm) => {
+    elm.addEventListener('click', (event) => {
+      const page = event.target.getAttribute('href').substr(1);
+      parseUrl(page);
+    });
   });
 };
 

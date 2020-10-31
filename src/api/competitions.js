@@ -1,11 +1,12 @@
 import { get } from 'axios';
-import data from './data';
+import { data, fetchData } from './data';
 
 const { baseUrl, apiKey } = data;
 
 const getCompetitions = async (id) => {
   try {
-    const response = await get(`${baseUrl}/v2/competitions/${id}`, {
+    fetchData(baseUrl, `v2/comcompetitions/${id}`);
+    const response = await get(`${baseUrl}v2/competitions/${id}`, {
       headers: { 'X-Auth-Token': apiKey },
     });
     return response.data;
@@ -16,7 +17,7 @@ const getCompetitions = async (id) => {
 
 const getTeams = async (id) => {
   try {
-    const response = await get(`${baseUrl}/v2/competitions/${id}/teams`, {
+    const response = await get(`${baseUrl}v2/competitions/${id}/teams`, {
       headers: { 'X-Auth-Token': apiKey },
     });
     return response.data;

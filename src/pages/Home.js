@@ -16,6 +16,7 @@ const Home = async () => {
   };
 
   const { teams } = teamsComp;
+
   jumbotron(dataJumbo);
   teamsSection(teams);
 };

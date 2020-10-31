@@ -2,8 +2,7 @@ import { Sidenav } from 'materialize-css';
 
 import registerServiceWorker from './script/register';
 import loadNav from './components/nav';
-import Home from './pages/Home';
-import DetailTeam from './pages/DetailTeam';
+import parseUrl from './pages/route';
 
 if (!('serviceWorker' in navigator)) {
   console.log('Service worker tidak didukung browser ini.');
@@ -11,21 +10,9 @@ if (!('serviceWorker' in navigator)) {
   registerServiceWorker();
 }
 
-const loadPage = (page, id) => {
-  switch (page) {
-    case 'teamDetail':
-      DetailTeam(id);
-      break;
-    case 'favorit':
-      console.log('favorit');
-      break;
-    case 'home':
-      Home();
-      break;
-    default:
-      Home();
-  }
+const pages = window.location.hash.substr(1);
 
+const loadPage = () => {
   document.addEventListener('DOMContentLoaded', () => {
     const sidenav = document.querySelector('.sidenav');
     Sidenav.init(sidenav);
@@ -35,18 +22,12 @@ const loadPage = (page, id) => {
       elm.addEventListener('click', (event) => {
         Sidenav.getInstance(sidenav).close();
 
-        const pagelink = event.target.getAttribute('href').substr(2);
-        loadPage(pagelink);
+        const page = event.target.getAttribute('href').substr(1);
+        parseUrl(page);
       });
     });
   });
 };
 
-const urlParams = new URLSearchParams(window.location.search);
-const idTeam = urlParams.get('teamId');
-let pages = window.location.hash.substr(2);
-
-if (pages === '') pages = 'home';
-if (idTeam) pages = 'teamDetail';
-
-loadPage(pages, idTeam);
+parseUrl(pages);
+loadPage();

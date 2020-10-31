@@ -5,13 +5,6 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  devServer: {
-    open: true,
-    watchOptions: {
-      poll: true,
-      ignored: '/node_modules/',
-    },
-  },
   entry: './src/index.js',
   output: {
     filename: 'main.js',

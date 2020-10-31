@@ -4,7 +4,6 @@ const tabTeam = (data) => {
   const main = document.querySelector('.main');
   const div = document.createElement('div');
 
-  console.log(data);
   const {
     name,
     shortName,
