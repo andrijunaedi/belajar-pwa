@@ -4,7 +4,7 @@ const teamsSection = (data) => {
   const main = document.querySelector('.main');
   const row = document.createElement('div');
 
-  row.setAttribute('class', 'row color-2');
+  row.setAttribute('class', 'row color-3');
   row.innerHTML = `
     <div class="container teams">
       <div class="col s12 m12">

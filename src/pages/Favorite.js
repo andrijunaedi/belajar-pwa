@@ -5,6 +5,7 @@ const Favorite = async (id) => {
   document.querySelector('.main').innerHTML = '';
   const allFavorite = await getAllFavorite();
   listFavorite(allFavorite);
+  document.getElementById('loading').style.display = 'none';
 };
 
 export default Favorite;

@@ -19,7 +19,7 @@ const tabTeam = (data) => {
   div.setAttribute('class', 'row');
   div.innerHTML = `
         <div class="container">
-        <ul id="tabs-team" class="tabs">
+        <ul id="tabs-team" class="tabs color-4">
             <li class="tab col s2 m2">
             <a class="active" href="#members">Members</a>
             </li>

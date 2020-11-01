@@ -1,11 +1,9 @@
-import { getCompetitions, getTeams } from '../api/competitions';
+import { getCompetitions } from '../api/competitions';
 import jumbotron from '../components/jumbotron';
-import teamsSection from '../components/teams';
 
 const Home = async () => {
   document.querySelector('.main').innerHTML = '';
   const competition = await getCompetitions(2021);
-  const teamsComp = await getTeams(2021);
 
   const dataJumbo = {
     id: competition.id,
@@ -15,10 +13,8 @@ const Home = async () => {
     currentMatchday: competition.currentSeason.currentMatchday,
   };
 
-  const { teams } = teamsComp;
-
   jumbotron(dataJumbo);
-  teamsSection(teams);
+  document.getElementById('loading').style.display = 'none';
 };
 
 export default Home;

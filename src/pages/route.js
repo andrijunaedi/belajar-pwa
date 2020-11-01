@@ -3,12 +3,16 @@ import Home from './Home';
 import DetailTeam from './DetailTeam';
 import Favorite from './Favorite';
 import DetailFavorite from './DatailFavorite';
+import Teams from './Teams';
 
 function parseUrl(pages) {
   const page = pages.split('?');
 
   if (page.length <= 1) {
     switch (page[0]) {
+      case 'team':
+        Teams();
+        break;
       case 'favorite':
         Favorite();
         break;

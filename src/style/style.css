@@ -14,6 +14,10 @@
   background-color: #424874;
 }
 
+.t-color-4 {
+  color: #424874;
+}
+
 .text-center {
   text-align: center;
 }
@@ -48,7 +52,7 @@
 
 .jumbotron {
   width: 100%;
-  height: 50vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,4 +108,20 @@
 .logo {
   max-width: 90%;
   margin: 0 auto;
+}
+
+.d-flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.tabs .tab a {
+  color: white;
+}
+
+main .row {
+  margin-bottom: 0px;
+}
+main .row .col {
+  margin-bottom: 0px;
 }

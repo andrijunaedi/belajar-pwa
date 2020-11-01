@@ -17,6 +17,7 @@ const DetailFavorite = async (id) => {
   tabTeam(data);
 
   main.appendChild(div);
+  document.getElementById('loading').style.display = 'none';
 };
 
 export default DetailFavorite;

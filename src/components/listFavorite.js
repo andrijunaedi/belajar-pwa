@@ -1,3 +1,5 @@
+import { toast } from 'materialize-css';
+
 import { deteleFavorite } from '../script/db';
 import parseUrl from '../pages/route';
 
@@ -25,8 +27,8 @@ const listFavorite = (favorite) => {
     li.setAttribute('class', 'collection-item');
     li.innerHTML = `
         <div>
-            <a href="#favorite?id=${team.id}" class="detail-favorite">${team.name}</a>
-            <a href="#favorite" class="secondary-content delete-team"><i data="${team.id}" page="#favorite" class="material-icons">delete</i></a>
+            <a href="#favorite?id=${team.id}" class="detail-favorite t-color-4">${team.name}</a>
+            <a href="#favorite" class="secondary-content delete-team"><i data="${team.id}" page="#favorite" class="material-icons t-color-4">delete</i></a>
         </div>
       `;
     listCard.appendChild(li);
@@ -44,6 +46,7 @@ const listFavorite = (favorite) => {
       const page = event.target.getAttribute('page').substr(1);
       const id = event.target.getAttribute('data');
       deteleFavorite(id);
+      toast({ html: 'Team removed from favorite' });
       parseUrl(page);
     });
   });

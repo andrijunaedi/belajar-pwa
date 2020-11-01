@@ -1,3 +1,5 @@
+import { toast } from 'materialize-css';
+
 import getDetailTeams from '../api/teams';
 import tabTeam from '../components/tabTeam';
 import tronTeams from '../components/tronTeams';
@@ -19,8 +21,8 @@ const DetailTeam = async (id) => {
 
   div.setAttribute('class', 'fixed-action-btn');
   div.innerHTML = `
-    <a class="btn-floating btn-large red" id="save">
-    <i class="large material-icons">save</i>
+    <a class="btn-floating btn-large color-4" id="save">
+    <i class="large material-icons">favorite</i>
     </a>
   `;
   main.appendChild(div);
@@ -30,7 +32,10 @@ const DetailTeam = async (id) => {
     const idTeam = window.location.hash.substr(9);
     const data = await getDetailTeams(idTeam);
     saveForFavorite(data);
+    toast({ html: `${data.name} added favorite` });
   });
+
+  document.getElementById('loading').style.display = 'none';
 };
 
 export default DetailTeam;
