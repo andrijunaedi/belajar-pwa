@@ -22,7 +22,7 @@ self.addEventListener('install', (event) => {
 
 // Mengecek Data jika ada di cache maka data akan diarahkan ke CACHE
 self.addEventListener('fetch', (event) => {
-  const baseUrl = 'http://api.football-data.org/';
+  const baseUrl = 'https://api.football-data.org/';
 
   if (event.request.url.indexOf(baseUrl) > -1) {
     event.respondWith(

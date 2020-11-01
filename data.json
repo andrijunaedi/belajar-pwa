@@ -4,7 +4,7 @@
     "publicKey": "BICm0vCmpwpqZW7-vxqY2mTx2_gQktNryglV1Yhy2rupNV0qMWURxZ67OlWwDZBpnaTvhALEQkGyoTgx9g7nMLI",
     "privateKey": "72eQ_9QoIDwlci6XpGYdnZo3xLnBSFmA_02zVwJoA7Y"
   },
-  "endpoint": "https://fcm.googleapis.com/fcm/send/dGOx2-nvvqQ:APA91bEkheKjrCXG88g5a5udT_ATNGVPbt2p2SZkOqIUbbhc2ziVbhIfMcJUV5W0IhCDhy_9hVyIWVmJ810KTkN3gc68GsoySaHswi-SjOi2oDrgaWKCeCWv0rBliCB_nVpXGV6KJqr2",
-  "p256dh": "BC8clYwRNoiEs92C5zhXOQ4GoCxx0PfnwrAwaxoJ60vzKGEmfypRLXm6Cee/YLDTl9qHMYXUyait7eAXX8ifKBk=",
-  "auth": "8jIr60nR1dkpL+2OUDo0Og=="
+  "endpoint": "https://fcm.googleapis.com/fcm/send/dOlhnmaOhBg:APA91bHeWM9bB7Xptgcg1Wuafvmrpo_wCBxHJe3NGP5eEkwGI_UHPT4SD8bUgwq_oUYRHyocwAqbyMBsoZzZGa6zKNxWp_jy3AFbywoVilYL5LKDY47Z8qNSuqtJt4pkom4UmI-G22qO",
+  "p256dh": "BMzBdIdTnuUhKu5MCDMfwg4L4JY3T2183N2o2pBfL9YeYoNnO6dhGu24VDfjntdhlfrXP8Ia3AU7m3Sfqfy0VnE=",
+  "auth": "GFMhJzn1cqj2WMVNAxVgJA=="
 }
