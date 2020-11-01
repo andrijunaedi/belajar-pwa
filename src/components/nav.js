@@ -10,7 +10,7 @@ const loadNav = () => {
     <div class="user-view">
         <div class="background color-4">
         </div>
-        <a href="#home"><img class="circle" src="img/android-chrome-192x192.png"/></a>
+        <a href="#home"><img class="circle" alt="Bolaku" src="img/android-chrome-192x192.png"/></a>
         <a href="#home" class="title ml-2"><span class="white-text">Bolaku</span></a>
     </div>
   </li>`;

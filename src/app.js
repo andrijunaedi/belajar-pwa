@@ -11,8 +11,6 @@ if (!('serviceWorker' in navigator)) {
   registerServiceWorker();
 }
 
-requestPermission();
-
 const pages = window.location.hash.substr(1);
 
 const loadPage = () => {
@@ -34,3 +32,4 @@ const loadPage = () => {
 
 parseUrl(pages);
 loadPage();
+requestPermission();
