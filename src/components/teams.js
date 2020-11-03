@@ -23,7 +23,7 @@ const teamsSection = (data) => {
 
       <div class="team">
       <a href="./#team?id=${id}"><img src="${img}" alt="${name}" href="#team?id=${id}" /></a>
-      <div class="name"><a href="./#team?id=${id}" >${name}</a></div>
+      <div class="name"><a href="#team?id=${id}" >${name}</a></div>
       </div>
 
         `;

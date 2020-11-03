@@ -1,10 +1,10 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
   entry: './src/index.js',
   output: {
     filename: 'main.js',
@@ -30,7 +30,16 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env'],
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    targets: {
+                      node: 'current',
+                    },
+                  },
+                ],
+              ],
             },
           },
         ],
@@ -46,10 +55,6 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: './src/service-worker.js',
-          to: path.resolve(__dirname, 'dist'),
-        },
-        {
           from: './src/manifest.json',
           to: path.resolve(__dirname, 'dist'),
         },
@@ -58,6 +63,10 @@ module.exports = {
           to: path.resolve(__dirname, 'dist/img'),
         },
       ],
+    }),
+    new WorkboxWebpackPlugin.InjectManifest({
+      swSrc: './src/service-worker.js',
+      swDest: 'service-worker.js',
     }),
   ],
 };

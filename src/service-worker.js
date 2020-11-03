@@ -1,62 +1,108 @@
-const CACHE_NAME = 'bolaku-v1';
-const urlsToCache = [
-  '/',
-  '/main.js',
-  '/index.html',
-  '/manifest.json',
-  '/img/favicon.ico',
-  '/img/maskable-icon.png',
-  '/img/favicon-16x16.png',
-  '/img/favicon-32x32.png',
-  '/img/apple-touch-icon.png',
-  '/img/android-chrome-192x192.png',
-  '/img/android-chrome-512x512.png',
-];
+/* eslint-disable no-restricted-globals */
+import { CacheableResponsePlugin } from 'workbox-cacheable-response';
+import { registerRoute } from 'workbox-routing';
+import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
+import { ExpirationPlugin } from 'workbox-expiration';
+import { precacheAndRoute } from 'workbox-precaching';
+import { clientsClaim, skipWaiting } from 'workbox-core';
 
-// Add Cache
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache)),
-  );
+// eslint-disable-next-line no-underscore-dangle
+const caches = self.__WB_MANIFEST;
+
+// ParseCachesURL
+const parseCaches = caches.map((cache) => {
+  const parseUrl = cache.url.replace('auto', '');
+  return { revision: cache.revision, url: parseUrl };
 });
 
-// Mengecek Data jika ada di cache maka data akan diarahkan ke CACHE
-self.addEventListener('fetch', (event) => {
-  const baseUrl = 'https://api.football-data.org/';
+precacheAndRoute(parseCaches, { ignoreUrlParametersMatching: [/.*/] });
 
-  if (event.request.url.indexOf(baseUrl) > -1) {
-    event.respondWith(
-      caches.open(CACHE_NAME).then((cache) =>
-        fetch(event.request).then((response) => {
-          cache.put(event.request.url, response.clone());
-          return response;
-        }),
-      ),
-    );
-  } else {
-    event.respondWith(
-      caches
-        .match(event.request)
-        .then((response) => response || fetch(event.request)),
-    );
-  }
-});
+registerRoute(
+  ({ request }) => request.destination === 'script' || request.destination === 'style',
+  new CacheFirst({
+    cacheName: 'sources',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 365 * 24 * 60 * 60, // 1 Tahun
+      }),
+    ],
+  }),
+);
 
-// Menghapus CACHE lama
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((cacheNames) =>
-      Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            console.log(`ServiceWorker: cache ${cacheName} dihapus`);
-            return caches.delete(cacheName);
-          }
-        }),
-      ),
-    ),
-  );
-});
+registerRoute(
+  new RegExp(/\.(?:eot|ttf|woff|woff2)$/),
+  new CacheFirst({
+    cacheName: 'font-icons',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 365 * 24 * 60 * 60, // 1 Tahun
+      }),
+    ],
+  }),
+);
+
+registerRoute(
+  ({ request }) => request.destination === 'image',
+  new CacheFirst({
+    cacheName: 'images',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Hari
+      }),
+    ],
+  }),
+);
+
+//  API: CacheFirst
+registerRoute(
+  ({ request }) => request.url.indexOf('competitions') > -1,
+  new CacheFirst({
+    cacheName: 'api-cachefirst',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Hari
+      }),
+    ],
+  }),
+);
+
+//  API: StaleWhileRevalidate
+registerRoute(
+  ({ request }) => request.url.indexOf('matches') > -1
+    || request.url.indexOf('standings') > -1
+    || request.url.indexOf('teams') > -1,
+  new StaleWhileRevalidate({
+    cacheName: 'api-stalewhilerevalidate',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxAgeSeconds: 60 * 60, // 1 Jam
+        maxEntries: 60,
+      }),
+    ],
+  }),
+);
+
+skipWaiting();
+clientsClaim();
 
 self.addEventListener('push', (event) => {
   let body;
