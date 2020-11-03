@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bolaku</title>
+    <meta
+      name="Description"
+      content="Bolaku, Menampilkan seputar info sepakbola liga Premier Leagua."
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/img/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/img/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/img/favicon-16x16.png"
+    />
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#394867" />
+    <link rel="preconnect" href="https://crests.football-data.org" />
+    <link rel="preconnect" href="https://api.football-data.org" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="color-4 lighten-1" role="navigation">
+      <div class="nav-wrapper container">
+        <a href="#home" class="brand-logo" id="logo-container">Bolaku</a>
+        <a href="#" class="sidenav-trigger" data-target="nav-mobile">&#9776;</a>
+
+        <ul class="topnav right hide-on-med-and-down"></ul>
+        <ul class="sidenav" id="nav-mobile"></ul>
+      </div>
+      <div id="loading">
+        <div class="progress"><div class="indeterminate"></div></div>
+      </div>
+    </nav>
+    <main class="main" role="main"></main>
+  </body>
+</html>

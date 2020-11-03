@@ -1,0 +1,10 @@
+{
+  "senderId": "559292637234",
+  "vapidKeys": {
+    "publicKey": "BICm0vCmpwpqZW7-vxqY2mTx2_gQktNryglV1Yhy2rupNV0qMWURxZ67OlWwDZBpnaTvhALEQkGyoTgx9g7nMLI",
+    "privateKey": "72eQ_9QoIDwlci6XpGYdnZo3xLnBSFmA_02zVwJoA7Y"
+  },
+  "endpoint": "https://fcm.googleapis.com/fcm/send/ehJW4svJJyY:APA91bEuVVIPi44BnUe8ArScHwrR-VXbKy7hKuimnKU1cZzz9Ery0pnZPxqbx2cfbJsHmbWUgI2Gk6DkgnyYV4bROSQkKGioUBcWaPHV2SJsrQeNLhXRNaFxJo7X6B1wLUaq-SveZpq4",
+  "p256dh": "BCyajyzFjd74gDkQ6oCprayx1CmxyYJljWwo5sXsMlMiOIx8bPNF/MM7adZ+cFt/C5IWhYl11EjqH6Tjzlc1vQ8=",
+  "auth": "EdYvXux099WQxei4HQeUuA=="
+}

@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.color-1 {
+  background-color: #f4eeff;
+}
+
+.color-2 {
+  background-color: #dcd6f7;
+}
+
+.color-3 {
+  background-color: #a6b1e1;
+}
+
+.color-4 {
+  background-color: #424874;
+}
+
+.t-color-4 {
+  color: #424874;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-bold {
+  font-weight: bold;
+}
+
+.user-view {
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-view .background {
+  height: 100%;
+}
+
+.ml-2 {
+  margin-left: 20px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.title-2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.jumbotron {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jumbotron .title-compotition {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.jumbotron .season {
+  flex-basis: 100%;
+}
+
+.teams-card {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.team {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 5px;
+}
+.team img {
+  max-width: 80%;
+  height: 100px;
+}
+
+.team .name {
+  margin-top: 5px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-align: center;
+  flex-basis: 100%;
+}
+
+.team .name a {
+  color: #424874;
+}
+
+.team .name a:hover {
+  color: #161616;
+  font-weight: 700;
+}
+
+.logo {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.d-flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.tabs .tab a {
+  color: white;
+}
+
+main .row {
+  margin-bottom: 0px;
+}
+main .row .col {
+  margin-bottom: 0px;
+}
