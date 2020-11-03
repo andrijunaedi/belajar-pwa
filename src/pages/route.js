@@ -21,7 +21,6 @@ function parseUrl(pages) {
         break;
       default:
         Home();
-        break;
     }
   } else {
     const id = page[1].substr(3);
