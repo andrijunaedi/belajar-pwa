@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.netlify.bolakupwa.twa",
+      "sha256_cert_fingerprints": [
+        "C4:48:1D:DD:EB:9C:66:B1:B2:0D:62:08:64:67:F1:43:B2:56:7A:4F:C2:D4:56:2B:2B:6D:C8:FE:45:9C:F1:46"
+      ]
+    }
+  }
+]
