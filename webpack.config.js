@@ -62,6 +62,10 @@ module.exports = {
           from: './src/img',
           to: path.resolve(__dirname, 'dist/img'),
         },
+        {
+          from: './.well-known/assetlinks.json',
+          to: path.resolve(__dirname, 'dist/.well-known'),
+        },
       ],
     }),
     new WorkboxWebpackPlugin.InjectManifest({
